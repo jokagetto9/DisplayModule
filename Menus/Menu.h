@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "../ModelManager.h"
+#include "../Shaders/ModelManager.h"
 
 //********************************* CONSTANTS *********************************
  
