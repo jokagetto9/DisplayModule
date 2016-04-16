@@ -28,7 +28,7 @@ void StackManager::setRootMenu(){}
 //void StackManager::setMenu(MenuType mt){}
 
 
-void StackManager::	update(ControllerInput &input){
+void StackManager::	update(InputManager &input){
 
 	if (G->initMenu);// setRootMenu();
 	if (G->paused){

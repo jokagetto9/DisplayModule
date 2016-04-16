@@ -1,7 +1,7 @@
 #ifndef StackManager_H
 #define StackManager_H
 
-#include "../System/ControllerInput.h"
+#include "../System/InputManager.h"
 
 
 //********************************* CONSTANTS *********************************
@@ -35,7 +35,7 @@ Triggers:
 //********************************* UPDATES *********************************
 	void StackManager::	interactions();
 	
-	void StackManager::	update(ControllerInput &input);
+	void StackManager::	update(InputManager &input);
 	void StackManager::	updateMenu();
 	
 	
