@@ -47,7 +47,7 @@ void Menu::addFlow(int menuIndex){
 }
 
 void Menu::setFlow(int menuIndex){	
-	flows.push_back(menuID);
+	flows.push_back(menuIndex);
 	fixed = true;
 
 }

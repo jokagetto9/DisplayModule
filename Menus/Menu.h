@@ -5,8 +5,6 @@
 
 //********************************* CONSTANTS *********************************
  
-//enum ActionType {EXITA, OPTN, STGSLCT, STGINFO, STGCOMP, UPGRADE, PLAY};
-
 //********************************* INITIALIZATION *********************************
 
 class Menu   {
