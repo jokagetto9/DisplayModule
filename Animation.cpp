@@ -39,7 +39,7 @@ void Animation::draw(glm::vec3 s, float camTheta, float frameDelta){
 
 		it = dir + tweak;
 	}
-	//if (it >= 0 && it < 16) M->gridBO.drawx16(it);
+	if (it >= 0 && it < 16) M->gridBO.drawx16(it);
 	
 }
 
