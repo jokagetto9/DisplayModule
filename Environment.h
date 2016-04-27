@@ -25,7 +25,6 @@ public:
 	// view functions
 
 	void Environment::	draw();			// draw update
-	void Environment::	getSkyColour();
 
 	// Cycle updates 
 	//void Environment::	update(Biome b);	
