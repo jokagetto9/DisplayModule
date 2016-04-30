@@ -51,6 +51,7 @@ Triggers:
 //********************************* MEMBERS *********************************
 	
 	//MenuType type;
+	string name;
 	int menuID;
 	int parent;
 	//MenuType parent;
