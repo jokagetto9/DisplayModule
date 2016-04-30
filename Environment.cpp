@@ -9,7 +9,6 @@ void Environment::init(){
 
 
 void Environment::initFog(bool init){
-	G->fog = init;	
 	//fogColor[0] = 0.18; fogColor[1] = 0.75;
 	//fogColor[2] = 1; fogColor[3] = 1;
 	fogColor[0] = 0.5; fogColor[1] = 1;
@@ -19,7 +18,7 @@ void Environment::initFog(bool init){
 	//M->adjustFog(0);
 	targetFogD = 500;
 	targetFogS = 150;
-	if (G->fog) glEnable(GL_FOG);				//enable
+	glEnable(GL_FOG);				//enable
 	glClearColor(0, 0, 0, 1.0);		//initialise background color
 
 	glFogi(GL_FOG_MODE, GL_LINEAR);			//linear mode?

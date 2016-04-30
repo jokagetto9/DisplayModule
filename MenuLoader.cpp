@@ -30,7 +30,9 @@ void MenuLoader::loadList(){
 				}
 			}
 		}
-		loadMenuTree(0);
+		for (int i = 0; i < menuFiles.size(); i++){
+			loadMenuTree(i);
+		}
 	}catch(...){
 		cout << "Menu did not load properly.";
 	}
@@ -73,6 +75,8 @@ void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
 						menu.setBackground(loadTexture(a->value(), false));
 						success = true;
 					}
+					if (s == "backdrop")
+						menu.backdrop = getInt(a->value());					
 				}
 			}
 			if (getText(n->name()) == "Flow"){
