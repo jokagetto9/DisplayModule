@@ -43,7 +43,7 @@ void MenuLoader::loadMenuTree(int i){
 		try {
 			doc.parse<0>(xmlFile.data());
 			rapidxml::xml_node<> *list = doc.first_node();
-			for (list = doc.first_node(); list; list = list->next_sibling())
+			for (list = list->first_node(); list; list = list->next_sibling())
 				loadMenu(i, list);
 		}catch(...){
 			cout << "Menu [" << i << "] did not load properly.";
@@ -56,24 +56,27 @@ void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
 	rapidxml::xml_attribute<> *a;
 	string s = getText(node->name());
 	Menu menu;
-
+	bool success = false;
 	if (s == "Menu"){ 
 		for (a = node->first_attribute(); a; a = a->next_attribute()){
-			s = getText(a->name());	
+			s = getText(a->name());
 			if (s == "name")
 				menu.name = getText(a->value());					
 			if (s == "timeout")
 				menu.timeOut = getInt(a->value());	
 		}
 		for (n = node->first_node(); n; n = n->next_sibling()){
-			s = getText(n->name());	
-			if (s == "Background"){
-				for (a = node->first_attribute(); a; a = a->next_attribute()){
-
+			if (getText(n->name()) == "Background"){
+				for (a = n->first_attribute(); a; a = a->next_attribute()){
+					s = getText(a->name());
+					if (s == "filename"){
+						menu.setBackground(loadTexture(a->value(), false));
+						success = true;
+					}
 				}
 			}
 		}
-		rMenus[0]->addMenu(menu);
+		if (success) rMenus[i]->addMenu(menu);
 	}
 	
 }

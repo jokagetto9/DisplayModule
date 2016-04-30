@@ -11,7 +11,7 @@ class Menu   {
 	public: 
 	Menu::		Menu();
 	virtual void Menu::		init(Menu *screen);
-	void Menu::		setBackground(int id);
+	void Menu::		setBackground(GLuint id);
 	void Menu::		addText(string s);
 	void Menu::		addCursor(int id, int x, int y);
 
@@ -60,7 +60,7 @@ Triggers:
 	vector <int> flows;
 	XZI cursor;
 	int cursorID;
-	int backgroundID;
+	GLuint backgroundT;
 
 	bool abort, affirm, update; 
 	bool overlay, preview, fixed, backdrop;

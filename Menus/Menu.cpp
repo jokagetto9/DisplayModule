@@ -13,7 +13,7 @@ Menu ::Menu (){
 	cursor.x = 0; cursor.z = 0;
 	cursorID = -1;
 	index = 0; 	maxIndex = 0; 
-	backgroundID = -1;
+	backgroundT = 0;
 	lineH = 0; lineW = 0;
 }
 
@@ -26,8 +26,8 @@ void Menu::		init(Menu *screen){
 
 
 
-void Menu::	setBackground(int id){
-	backgroundID = id;
+void Menu::	setBackground(GLuint id){
+	backgroundT = id;
 }
 
 
@@ -124,6 +124,6 @@ void Menu::	drawIcons(){
 	//}
 }
 void Menu::	drawBackground(){
-	if (backgroundID > -1)
-		M->menuBO.draw(backgroundID);	
+	if (backgroundT > 0)
+		M->menuBO.draw(backgroundT);	
 }
