@@ -1,7 +1,7 @@
 //********************************* INITIALIZATION *********************************
 #include "MenuLoader.h"
 
-void MenuLoader::registerRoot(MenuCommand * m){
+void MenuLoader::registerRoot(StackCommand * m){
 	if (m)
 		rMenus.push_back(m);
 }

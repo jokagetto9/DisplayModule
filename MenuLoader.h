@@ -10,7 +10,7 @@
 class MenuLoader  {
 
 public: 
-	void MenuLoader::registerRoot(MenuCommand * m);
+	void MenuLoader::registerRoot(StackCommand * m);
 
 
 	void MenuLoader::loadList();
@@ -25,7 +25,7 @@ public:
 	int MenuLoader::getInt(char * c);
 private:
 	vector <string> menuFiles;		
-	vector <MenuCommand *> rMenus;
+	vector <StackCommand *> rMenus;
 
 };
 #endif
