@@ -75,6 +75,9 @@ void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
 					}
 				}
 			}
+			if (getText(n->name()) == "Flow"){
+				menu.setFlow(getInt(n->value()));
+			}
 		}
 		if (success) rMenus[i]->addMenu(menu);
 	}
