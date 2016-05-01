@@ -4,7 +4,10 @@
 #include "../Shaders/ModelManager.h"
 
 //********************************* CONSTANTS *********************************
- 
+ struct Cursor {
+	 GLuint t;
+	 int id;
+ };
 //********************************* INITIALIZATION *********************************
 
 class Menu   {
@@ -14,12 +17,12 @@ class Menu   {
 	void Menu::		setBackground(GLuint id);
 	void Menu::		addText(string s);
 	void Menu::		addCursor(int id, int x, int y);
+	static void Menu::	createCursor(GLuint t, int i);
 
 	void Menu::addFlow(int menuIndex);	
 	virtual void Menu::setFlow(int menuIndex);	
 	virtual int Menu::getFlow();
 
-	
 	virtual void Menu::	cursorLR(int i);	
 	virtual void Menu::	cursorUD(int i);
 	virtual void Menu::	menuExit(){abort = true;}
@@ -44,12 +47,13 @@ class Menu   {
 	virtual void Menu::	drawIcons();
 	virtual void Menu::	drawBackground ();
 
-/*/ Purpose: 
-Side Effects:  
-Triggers: 
-/*/
+
+//********************************* MEMBER FUNCTIONS *********************************
+	bool Menu::isDone(){return abort;};
+	void Menu::setTimeOut(int to){timeOut = to;};
+	virtual int Menu::getCategory(){return 0;}
 //********************************* MEMBERS *********************************
-	
+
 	//MenuType type;
 	string name;
 	int menuID;
@@ -70,11 +74,9 @@ Triggers:
 	int lineW;
 	int timeOut;
 	int time;
+	static vector <Cursor> cursors;
 
-//********************************* MEMBER FUNCTIONS *********************************
-	bool Menu::isDone(){return abort;};
-	void Menu::setTimeOut(int to){timeOut = to;};
-	virtual int Menu::getCategory(){return 0;}
+protected:
 
 };
 #endif

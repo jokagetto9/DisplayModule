@@ -8,14 +8,16 @@
 //********************************* INITIALIZATION *********************************
 
 class MenuLoader  {
-
 public: 
+	MenuLoader::MenuLoader();
+
 	void MenuLoader::registerRoot(StackCommand * m);
 
 
 	void MenuLoader::loadList();
 	void MenuLoader::loadMenuTree(int i);
 	void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node);
+	void MenuLoader::loadCursors();
 
 	void MenuLoader::printList();
 	void MenuLoader::printMenu(int i);
@@ -26,6 +28,8 @@ public:
 private:
 	vector <string> menuFiles;		
 	vector <StackCommand *> rMenus;
+	string cursorFile;
+
 
 };
 #endif

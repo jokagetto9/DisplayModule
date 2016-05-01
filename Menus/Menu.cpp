@@ -1,4 +1,6 @@
 #include "Menu.h"
+vector <Cursor> Menu ::cursors;
+
 
 Menu ::Menu (){
 	affirm = false;	abort = false;
@@ -40,6 +42,12 @@ void Menu::		addCursor(int id, int x, int y){
 	cursor.x = x;
 	cursor.z = y;
 }
+
+void Menu::	createCursor(GLuint t, int i){
+	Cursor c = {t, i};
+	cursors.push_back(c);
+}
+
 
 void Menu::addFlow(int menuIndex){
 	flows.push_back(menuID);
@@ -113,8 +121,9 @@ void Menu::		rapidUpdate(){
 	
 void Menu::	drawText(){}	
 void Menu::	drawCursor(){
-	if (cursorID >= 0){
-		//M->cursorBO.drawCursor(cursorID, cursor.x + lineW * index, cursor.z + lineH * index); 
+	if (cursorID >= 0 && cursorID < cursors.size()){
+		Cursor c = cursors[cursorID];
+		M->cursorBO.drawCursor(c.t, c.id, cursor.x + lineW * index, cursor.z + lineH * index); 
 	}
 }
 void Menu::	drawIcons(){	
