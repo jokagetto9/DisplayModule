@@ -51,7 +51,7 @@ void Menu::	createCursor(GLuint t, int i){
 
 
 void Menu::addFlow(int menuIndex){
-	flows.push_back(menuID);
+	flows.push_back(menuIndex);
 	maxIndex = flows.size()-1;
 }
 
@@ -68,7 +68,7 @@ int Menu::getFlow(){
 	} else if (flows.size() >= index+1){
 		return flows[index];
 	}
-	return (int)QUIT;
+	return (int)BACK;
 }
 
 

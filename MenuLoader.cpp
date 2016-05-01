@@ -108,7 +108,13 @@ void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
 				}
 			}
 			if (getText(n->name()) == "Flow"){
-				menu.setFlow(getInt(n->value()));
+				bool f = false;
+				for (a = n->first_attribute(); a; a = a->next_attribute()){
+					if (getText(a->name()) == "func")
+						f = getInt(a->value());
+				}
+				menu.func = f;
+				menu.addFlow(getInt(n->value()));
 			}
 		}
 		if (success) rMenus[i]->addMenu(menu);
