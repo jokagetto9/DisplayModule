@@ -68,6 +68,7 @@ class Menu   {
 
 	bool abort, affirm, update; 
 	bool overlay, preview, fixed, backdrop;
+	bool func;
 	int index, maxIndex;
 	int parentIndex;
 	int lineH;

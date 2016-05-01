@@ -3,6 +3,7 @@ vector <Cursor> Menu ::cursors;
 
 
 Menu ::Menu (){
+	func = true;
 	affirm = false;	abort = false;
 	update = true;
 	overlay = false;
