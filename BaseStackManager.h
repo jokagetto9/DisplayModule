@@ -1,8 +1,8 @@
 #ifndef BASESTACKMANAGER_H
 #define BASESTACKMANAGER_H
 
-#include "BaseInputManager.h"
-#include "../../Display/MenuLoader.h"
+#include "../BaseInputManager.h"
+#include "MenuLoader.h"
 
 
 //********************************* CONSTANTS *********************************

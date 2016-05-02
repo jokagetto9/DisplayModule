@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "../Shaders/ModelManager.h"
+#include "../../../Display/ModelManager.h"
 
 //********************************* CONSTANTS *********************************
  struct Cursor {

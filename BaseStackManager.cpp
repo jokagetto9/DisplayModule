@@ -20,7 +20,7 @@ void BaseStackManager::	loadCommand(PlayCommand * cmd){
 
 void BaseStackManager::	update(){
 	if (empty()){	
-		if (G0->state == TITLE){
+		if (G->state == TITLE){
 			title.enter(stack, 1);
 			title.enter(stack, 0);			//pop production bumpers!
 			currRoot = &title;
@@ -49,11 +49,11 @@ void BaseStackManager::setMenu(int flow){
 			play.enter(stack, 0);
 			currRoot = NULL;
 		}else if (func == RESTART){	
-			G0->loaded = false;
+			G->loaded = false;
 		}else if (func == QUIT){
 			stack.clear();
-			G0->loaded = false;
-			G0->state = TITLE;
+			G->loaded = false;
+			G->state = TITLE;
 		}else if (func == USE){
 			//usageMenu.init(stack.back());
 			//stack.push_back(menuList[mt]);
@@ -79,7 +79,7 @@ void BaseStackManager::setMenu(int flow){
 //*/
 
 void BaseStackManager:: updateMenu(){
-	if (G0->state != PLAY){
+	if (G->state != PLAY){
 		Menu *s = stack.back();
 		if (s->affirm){
 			s->reset();
@@ -110,7 +110,7 @@ void BaseStackManager::	pushMenu(Menu * s){
 void BaseStackManager::	popMenu(){
 	if (!stack.empty()){
 		if (stack.back()->abort){
-			if (stack.size() == 1 && G0->state != TITLE)							
+			if (stack.size() == 1 && G->state != TITLE)							
 				stack.back()->abort = false;
 			else{
 				stack.back()->reset();

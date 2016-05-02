@@ -2,8 +2,8 @@
 #define ENVIRONMENT_H
 
 
-#include "../System/GameState.h"
-#include "Shaders/ModelManager.h"
+#include "../BaseGameState.h"
+#include "../../Display/ModelManager.h"
 
 
 //********************************* CONSTANTS *********************************
