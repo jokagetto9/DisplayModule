@@ -18,6 +18,12 @@ void BaseStackManager::	loadCommand(PlayCommand * cmd){
 	}
 }
 
+void BaseStackManager:: menuInput(MenuCommand * cmd){
+	if (!empty())
+		cmd->exec(stack.back());
+}
+
+
 void BaseStackManager::	update(){
 	if (empty()){	
 		if (G->state == TITLE){
@@ -31,10 +37,30 @@ void BaseStackManager::	update(){
 	}
 }
 
-
-void BaseStackManager:: menuInput(MenuCommand * cmd){
-	if (!empty())
-		cmd->exec(stack.back());
+void BaseStackManager:: updateMenu(){
+	if (G->state != PLAY){
+		Menu *s = stack.back();
+		if (s->affirm){
+			s->reset();
+			int id = s->getFlow();
+			setMenu(id);
+		}
+		if (!empty()){			
+			s = stack.back();
+			if (s->update){
+				s->refresh();
+				if(s->preview){
+					GameFunctionCode mt = (GameFunctionCode)s->getFlow();
+					if (mt != QUIT){
+						//previewMenu = menuList[mt];
+						//previewMenu->refresh(s->index);
+					}else 
+						previewMenu = NULL;
+				}
+				s->update = false;
+			} 
+		}
+	}//*/
 }
 
 //enum GameFunctionCode {BACK, QUIT, SAVE, LOAD, START, OPTN, USE, CNFM, PASS};
@@ -50,10 +76,14 @@ void BaseStackManager::setMenu(int flow){
 			currRoot = NULL;
 		}else if (func == RESTART){	
 			G->loaded = false;
-		}else if (func == QUIT){
+		}else if (func == OPTN){	
+
+		}else if (func == MAINMENU){
 			stack.clear();
 			G->loaded = false;
 			G->state = TITLE;
+		}else if (func == QUIT){
+			G->gameActive = false;
 		}else if (func == USE){
 			//usageMenu.init(stack.back());
 			//stack.push_back(menuList[mt]);
@@ -78,30 +108,6 @@ void BaseStackManager::setMenu(int flow){
 		}
 //*/
 
-void BaseStackManager:: updateMenu(){
-	if (G->state != PLAY){
-		Menu *s = stack.back();
-		if (s->affirm){
-			s->reset();
-			setMenu(s->getFlow());
-		}
-		if (!empty()){			
-			s = stack.back();
-			if (s->update){
-				s->refresh();
-				if(s->preview){
-					GameFunctionCode mt = (GameFunctionCode)s->getFlow();
-					if (mt != QUIT){
-						//previewMenu = menuList[mt];
-						//previewMenu->refresh(s->index);
-					}else 
-						previewMenu = NULL;
-				}
-				s->update = false;
-			} 
-		}
-	}//*/
-}
 
 void BaseStackManager::	pushMenu(Menu * s){
 	stack.push_back(s);
