@@ -155,11 +155,20 @@ float findTheta(glm::vec3 v){ //V
 }
 
 
+
+void truncate(glm::vec3 &v, float max){	
+
+	if (glm::length2(v) > max * max){ 		
+		v = glm::normalize(v); 
+		v *= max;
+	}
+}
+
+
 float distSQ(glm::vec3 p1, glm::vec3 p2){
 	glm::vec3 v = p1 - p2;
 	return glm::length2(v);
 }
-
 
 
 float getDistSq(glm::vec3 v1, glm::vec3 v2){

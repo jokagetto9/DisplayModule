@@ -32,6 +32,12 @@ Returns: theta - facing direction -> 0 = SOUTH
 Triggers: loop360
 /*/
 
+void truncate(glm::vec3 &v, float max);
+/*/ Purpose: scale vector to max
+Parameter(s):  v - vector, max - max length of vector
+Side Effects:  v is normalized and scaled
+/*/
+
 float distSQ(glm::vec3 p1, glm::vec3 p2);
 /*/ Purpose: length of vector squared
 Parameter(s):  v = p1 - p2
@@ -39,9 +45,12 @@ Returns: length of v squared
 Triggers:  glm::length2
 /*/
 
+
+
 float getDistSq(glm::vec3 v1, glm::vec3 v2);
 long getDistSq2(glm::vec3 v1, glm::vec3 v2);
 bool notZero(glm::vec3 v);
+
 
 
 //********************************* INITIALIZATION *********************************
