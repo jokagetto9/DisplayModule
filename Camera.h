@@ -51,7 +51,7 @@ float getDistSq(glm::vec3 v1, glm::vec3 v2);
 long getDistSq2(glm::vec3 v1, glm::vec3 v2);
 bool notZero(glm::vec3 v);
 
-
+glm::vec3 radialOffset(glm::vec3 o, float arc, float dist);
 
 //********************************* INITIALIZATION *********************************
 class Camera  {  

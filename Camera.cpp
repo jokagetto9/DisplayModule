@@ -186,3 +186,13 @@ bool notZero(glm::vec3 v){
 	if(v.y != 0.0) return true;
 	return false;
 }
+
+
+
+glm::vec3 radialOffset(glm::vec3 o, float arc, float dist){
+	glm::vec3 v;
+	float theta = arc;
+	v = calcThetaV(theta);
+	v *= dist; v += o;
+	return v;
+}
