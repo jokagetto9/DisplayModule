@@ -40,22 +40,22 @@ void MenuLoader::loadAuxillary(rapidxml::xml_node<> * node){
 
 
 
-void MenuLoader::loadMenuTree(int i){
-	if (i < menuFiles.size() && i < rMenus.size()){
+void MenuLoader::loadMenuTree(ID id){
+	if (id < menuFiles.size() && id < rMenus.size()){
 		try {
-			rapidxml::file<> xmlFile(menuFiles[i].c_str()); // Default template is char
+			rapidxml::file<> xmlFile(menuFiles[id].c_str()); // Default template is char
 			rapidxml::xml_document<> doc;
 			doc.parse<0>(xmlFile.data());
 			rapidxml::xml_node<> *list = doc.first_node();
 			for (list = list->first_node(); list; list = list->next_sibling())
-				loadMenu(i, list);
+				loadMenu(id, list);
 		}catch(...){
-			cout << "Menu [" << i << "] did not load properly."<< endl;
+			cout << "Menu [" << id << "] did not load properly."<< endl;
 		}
 	}
 }
 
-void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
+void MenuLoader::loadMenu(ID id, rapidxml::xml_node<> * node){
 	rapidxml::xml_node<> *n;
 	rapidxml::xml_attribute<> *a;
 	string s = getText(node->name());
@@ -108,7 +108,7 @@ void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node){
 				menu.addFlow(getInt(n->value()));
 			}
 		}
-		if (success) rMenus[i]->addMenu(menu);
+		if (success) rMenus[id]->addMenu(menu);
 	}
 	
 }

@@ -16,8 +16,8 @@ public:
 
 
 	void MenuLoader::load();
-	void MenuLoader::loadMenuTree(int i);
-	void MenuLoader::loadMenu(int i, rapidxml::xml_node<> * node);
+	void MenuLoader::loadMenuTree(ID id);
+	void MenuLoader::loadMenu(ID id, rapidxml::xml_node<> * node);
 	void MenuLoader::loadAuxillary(rapidxml::xml_node<> * node);
 	void MenuLoader::loadCursors();
 
